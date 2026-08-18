@@ -1,0 +1,56 @@
+
+const sources = [
+  {
+    id: 'remotive',
+    name: 'Remotive',
+    type: 'json',
+    url: 'https://remotive.com/api/remote-jobs?limit=100',
+    enabled: true,
+    rpmLimit: 2,
+    tags: ['remote'],
+    description: 'Remote tech jobs — public JSON API, no auth (RSS is CF-gated)',
+    schema: {
+      itemsKey: 'jobs',
+      titleKey: 'title',
+      companyKey: 'company_name',
+      locationKey: 'candidate_required_location',
+      urlKey: 'url',
+      descriptionKey: 'description',
+      tagsKey: 'tags',
+      dateKey: 'publication_date',
+      remoteValue: true,
+    },
+  },
+  {
+    id: 'arbeitnow',
+    name: 'Arbeitnow',
+    type: 'json',
+    url: 'https://www.arbeitnow.com/api/job-board-api',
+    enabled: true,
+    rpmLimit: 3,
+    tags: [],
+    description: 'ATS-aggregated jobs — free JSON API, no auth',
+  },
+  {
+    id: 'himalayas',
+    name: 'Himalayas',
+    type: 'rss',
+    url: 'https://himalayas.app/jobs/rss',
+    enabled: true,
+    rpmLimit: 2,
+    tags: ['remote'],
+    description: 'Remote-first jobs — public RSS, no auth',
+  },
+  {
+    id: 'hasjob',
+    name: 'Hasjob (India)',
+    type: 'rss',
+    url: 'https://hasjob.co/feed',
+    enabled: true,
+    rpmLimit: 2,
+    tags: ['india', 'tech'],
+    description: 'Indian tech & startup jobs — public RSS, no auth',
+  },
+];
+
+export default sources;
