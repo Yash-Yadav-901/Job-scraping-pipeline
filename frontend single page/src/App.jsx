@@ -24,7 +24,7 @@ function Navbar({ health, isDarkMode, setIsDarkMode }) {
       <div className="header-inner">
         <a href="/" className="logo">
           
-          JobStream
+          Part 1 (JobStream)
         </a>
         <div className="header-badges">
          
