@@ -5,6 +5,7 @@
   "main": "src/server.js",
   "type": "module",
   "scripts": {
+    "build": "npm install",
     "start": "node src/server.js",
     "dev": "nodemon --watch src src/server.js",
     "dev:pretty": "node src/server.js | npx pino-pretty"
