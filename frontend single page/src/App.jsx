@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import './index.css';
-import { Zap, Atom, MapPin, Globe, ClipboardList, Search, BarChart3, Mailbox, Check, X } from 'lucide-react';
+import { Zap, Atom, MapPin, Globe, ClipboardList, Search, BarChart3, Mailbox, Check, X, FolderOpen } from 'lucide-react';
 
 function relativeTime(iso) {
   if (!iso) return '—';
@@ -24,7 +24,7 @@ function Navbar({ health }) {
     <header>
       <div className="header-inner">
         <a href="/" className="logo">
-         
+          <div className="logo-icon"><FolderOpen size={24} /></div>
           JobStream
         </a>
         <div className="header-badges">
