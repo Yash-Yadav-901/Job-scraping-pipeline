@@ -24,13 +24,11 @@ function Navbar({ health }) {
     <header>
       <div className="header-inner">
         <a href="/" className="logo">
-          <div className="logo-icon"><Zap size={18} /></div>
+         
           JobStream
         </a>
         <div className="header-badges">
-          <div className="react-pill">
-            <span><Atom size={12} /></span> React 18
-          </div>
+         
           <div className="live-badge">
             <span className="live-dot"></span>
             LIVE
@@ -40,7 +38,7 @@ function Navbar({ health }) {
             background: isOk ? 'var(--green-soft)' : 'var(--red-soft)',
             borderColor: isOk ? 'rgba(34,197,94,0.2)' : 'rgba(239,68,68,0.2)'
           }}>
-            {health ? (isOk ? `<Check size={12} style={{marginRight: "2px"}} /> DB ok · ↑${health.uptime}s` : '<X size={12} style={{marginRight: "2px"}} /> Offline') : 'Checking…'}
+            {health ? (isOk ? <><Check size={12} style={{marginRight: "2px"}} /> DB ok · ↑{health.uptime}s</> : <><X size={12} style={{marginRight: "2px"}} /> Offline</>) : 'Checking…'}
           </div>
         </div>
       </div>
@@ -416,13 +414,13 @@ export default function App() {
       const totalNew = (data.runs || []).reduce((s, r) => s + (r.jobsNew || 0), 0);
       const totalFound = (data.runs || []).reduce((s, r) => s + (r.jobsFound || 0), 0);
 
-      setIngestResult({ status: 'ok', text: `<Check size={12} style={{marginRight: "2px"}} /> ${totalFound} found, ${totalNew} new jobs added` });
+      setIngestResult({ status: 'ok', text: <><Check size={12} style={{marginRight: "2px"}} /> {totalFound} found, {totalNew} new jobs added</> });
       addToast(`Ingest complete: ${totalNew} new jobs`, 'ok');
 
       fetchJobs();
       fetchStatsAndSources();
     } catch (err) {
-      setIngestResult({ status: 'error', text: `<X size={12} style={{marginRight: "2px"}} /> ${err.message}` });
+      setIngestResult({ status: 'error', text: <><X size={12} style={{marginRight: "2px"}} /> {err.message}</> });
       addToast(err.message, 'error');
     } finally {
       setIsIngesting(false);
