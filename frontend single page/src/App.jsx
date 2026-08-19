@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import './index.css';
-import { Zap, Atom, MapPin, Globe, ClipboardList, Search, BarChart3, Mailbox, Check, X, FolderOpen } from 'lucide-react';
+import { Zap, Atom, MapPin, Globe, ClipboardList, Search, BarChart3, Mailbox, Check, X, FolderOpen, Sun, Moon } from 'lucide-react';
 
 function relativeTime(iso) {
   if (!iso) return '—';
@@ -17,14 +17,13 @@ async function apiFetch(path) {
   return res.json();
 }
 
-
-function Navbar({ health }) {
+function Navbar({ health, isDarkMode, setIsDarkMode }) {
   const isOk = health?.status === 'ok';
   return (
     <header>
       <div className="header-inner">
         <a href="/" className="logo">
-          {/* <div className="logo-icon"><FolderOpen size={24} /></div> */}
+          
           JobStream
         </a>
         <div className="header-badges">
@@ -33,6 +32,14 @@ function Navbar({ health }) {
             <span className="live-dot"></span>
             LIVE
           </div>
+          <button 
+            className="btn btn-ghost" 
+            style={{ padding: '6px' }}
+            onClick={() => setIsDarkMode(!isDarkMode)}
+            title="Toggle Theme"
+          >
+            {isDarkMode ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
         </div>
       </div>
     </header>
@@ -307,6 +314,11 @@ function ToastContainer({ toasts }) {
 }
 
 export default function App() {
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    const saved = localStorage.getItem('jobstream-theme');
+    return saved === 'dark';
+  });
+
   const [health, setHealth] = useState(null);
   const [stats, setStats] = useState(null);
   const [sources, setSources] = useState([]);
@@ -380,6 +392,16 @@ export default function App() {
   }, [fetchJobs]);
 
   useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      localStorage.setItem('jobstream-theme', 'dark');
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+      localStorage.setItem('jobstream-theme', 'light');
+    }
+  }, [isDarkMode]);
+
+  useEffect(() => {
     fetchHealth();
     fetchStatsAndSources();
     const timer = setInterval(() => {
@@ -422,7 +444,7 @@ export default function App() {
 
   return (
     <React.Fragment>
-      <Navbar health={health} />
+      <Navbar health={health} isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
       <main>
         <StatsBar stats={stats?.overall} />
         <SourceCards sources={sources} />
