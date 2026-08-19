@@ -30,3 +30,10 @@ AI models were utilized to accelerate boilerplate generation for the Express ser
 
 **Personal Verification & Changes:** 
 Every line of code was manually reviewed, tested, and modified. Specifically, we manually added safety guardrail parameters (such as strict 10-second timeout thresholds and fallback try/catch execution blocks) to prevent silent thread crashes, and we personally verified that the data source complied strictly with low-risk public data policies.
+
+
+
+## 4. Bonus: Frontend Dashboard
+
+**Why a Frontend was Included:** 
+Although this assignment (Part One) focuses primarily on backend data ingestion and system architecture, I took the initiative to build and deploy a lightweight React dashboard. This provides reviewers with an immediate, tangible way to visualize the pipeline in action, monitor the health of all 4 data sources, and trigger manual ingestions without needing to use Postman or cURL.
