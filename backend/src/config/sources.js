@@ -8,7 +8,7 @@ const sources = [
     enabled: true,
     rpmLimit: 2,
     tags: ['remote'],
-    description: 'Remote tech jobs — public JSON API, no auth (RSS is CF-gated)',
+    description: 'Remote tech jobs',
     schema: {
       itemsKey: 'jobs',
       titleKey: 'title',
@@ -29,7 +29,7 @@ const sources = [
     enabled: true,
     rpmLimit: 3,
     tags: [],
-    description: 'ATS-aggregated jobs — free JSON API, no auth',
+    description: 'ATS-aggregated jobs',
   },
   {
     id: 'himalayas',
@@ -39,7 +39,7 @@ const sources = [
     enabled: true,
     rpmLimit: 2,
     tags: ['remote'],
-    description: 'Remote-first jobs — public RSS, no auth',
+    description: 'Remote-first jobs',
   },
   {
     id: 'hasjob',
@@ -49,7 +49,7 @@ const sources = [
     enabled: true,
     rpmLimit: 2,
     tags: ['india', 'tech'],
-    description: 'Indian tech & startup jobs — public RSS, no auth',
+    description: 'Indian tech & startup jobs',
   },
 ];
 

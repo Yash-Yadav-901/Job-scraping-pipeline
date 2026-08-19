@@ -24,7 +24,7 @@ function Navbar({ health }) {
     <header>
       <div className="header-inner">
         <a href="/" className="logo">
-          <div className="logo-icon"><FolderOpen size={24} /></div>
+          {/* <div className="logo-icon"><FolderOpen size={24} /></div> */}
           JobStream
         </a>
         <div className="header-badges">
@@ -32,13 +32,6 @@ function Navbar({ health }) {
           <div className="live-badge">
             <span className="live-dot"></span>
             LIVE
-          </div>
-          <div className="live-badge" style={{
-            color: isOk ? 'var(--green)' : 'var(--red)',
-            background: isOk ? 'var(--green-soft)' : 'var(--red-soft)',
-            borderColor: isOk ? 'rgba(34,197,94,0.2)' : 'rgba(239,68,68,0.2)'
-          }}>
-            {health ? (isOk ? <><Check size={12} style={{marginRight: "2px"}} /> DB ok · ↑{health.uptime}s</> : <><X size={12} style={{marginRight: "2px"}} /> Offline</>) : 'Checking…'}
           </div>
         </div>
       </div>
